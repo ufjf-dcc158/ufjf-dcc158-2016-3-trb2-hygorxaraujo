@@ -1,0 +1,19 @@
+{
+  "name": "trab2",
+  "version": "1.0.0",
+  "description": "Trabalho 2 de Laboratório de Programação 6",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ufjf-dcc158/ufjf-dcc158-2016-3-trb2-hygorxaraujo.git"
+  },
+  "author": "Hygor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ufjf-dcc158/ufjf-dcc158-2016-3-trb2-hygorxaraujo/issues"
+  },
+  "homepage": "https://github.com/ufjf-dcc158/ufjf-dcc158-2016-3-trb2-hygorxaraujo#readme"
+}
