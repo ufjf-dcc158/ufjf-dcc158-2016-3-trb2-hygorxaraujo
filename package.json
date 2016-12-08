@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/ufjf-dcc158/ufjf-dcc158-2016-3-trb2-hygorxaraujo/issues"
   },
-  "homepage": "https://github.com/ufjf-dcc158/ufjf-dcc158-2016-3-trb2-hygorxaraujo#readme"
+  "homepage": "https://github.com/ufjf-dcc158/ufjf-dcc158-2016-3-trb2-hygorxaraujo#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "method-override": "^2.3.7",
+    "mongoose": "^4.7.2",
+    "morgan": "^1.7.0"
+  }
 }
