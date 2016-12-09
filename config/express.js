@@ -21,5 +21,6 @@ module.exports = function() {
   app.set('view engine', 'ejs');
   require('../app/route/index.server.route.js')(app);
   require('../app/route/player.server.route.js')(app);
+  require('../app/route/match.server.route.js')(app);
   return app;
 }
