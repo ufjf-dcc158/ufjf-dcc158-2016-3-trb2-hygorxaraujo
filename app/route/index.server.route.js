@@ -4,4 +4,4 @@ module.exports = function(app) {
   app.get("/", index.home);
   app.get("/index", index.home);
   app.get("/index.html", index.home);
-}
+};
