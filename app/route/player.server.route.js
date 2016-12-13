@@ -3,9 +3,8 @@ module.exports = function(app) {
     app.route('/players')
         .get(player.list)
         .post(player.create);
-  //app.route('/player/:playerId')
-        //.get(player.read)
-        //.put(player.update);
-  //app.param('playerId', player.playerById);
+    app.param('playerId', player.playerById);
+    app.route('/players/:playerId')
+        .get(player.read);
   app.get("/cadastrar-jogador", player.register);
 };

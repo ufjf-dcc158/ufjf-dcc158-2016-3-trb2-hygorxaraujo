@@ -24,3 +24,19 @@ module.exports.list = function (req, res, next) {
         }
     });
 };
+
+module.exports.playerById = function (req, res, next, id) {
+    Player.findOne({"_id": id},
+        function (err, player) {
+            if (err) {
+                next(err);
+            } else {
+                req.player = player;
+                next();
+            }
+        });
+};
+
+module.exports.read = function (req, res, next) {
+    res.json(req.player);
+};
