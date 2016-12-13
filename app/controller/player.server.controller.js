@@ -1,7 +1,7 @@
 const Player = require('mongoose').model('Player');
 
 module.exports.register = function (req, res, next) {
-    res.render('register-playerOne');
+    res.render('register-player');
 };
 
 module.exports.create = function (req, res, next) {
@@ -23,4 +23,4 @@ module.exports.list = function (req, res, next) {
             res.json(players);
         }
     });
-};;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+};
