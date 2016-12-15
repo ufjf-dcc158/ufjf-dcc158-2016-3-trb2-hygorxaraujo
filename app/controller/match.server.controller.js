@@ -41,12 +41,54 @@ module.exports.list = function (req, res, next) {
     renderAllMatches(req, res, next);
 };
 
+function setWinDefeat(winnerId, loserId, next) {
+    Player.findByIdAndUpdate(winnerId,
+        {$inc: {wins: 1}},
+        function (err, player) {
+            if (err) {
+                next(err);
+            }
+        }
+    );
+    Player.findByIdAndUpdate(loserId,
+        {$inc: {losses: 1}},
+        function (err, player) {
+            if (err) {
+                next(err);
+            }
+        }
+    );
+}
+
+function setDraw(winnerId, loserId, next) {
+    Player.findByIdAndUpdate(winnerId,
+        {$inc: {draws: 1}},
+        function (err, player) {
+            if (err) {
+                next(err);
+            }
+        }
+    );
+    Player.findByIdAndUpdate(loserId,
+        {$inc: {draws: 1}},
+        function (err, player) {
+            if (err) {
+                next(err);
+            }
+        }
+    );
+}
+
 module.exports.update = function (req, res, next) {
     req.body.finished = true;
     if (req.match.playerOneId == req.body.winnerId) {
         req.body.loserId = req.match.playerTwoId;
+        setWinDefeat(req.match.playerOneId, req.match.playerTwoId, next);
     } else if (req.match.playerTwoId == req.body.winnerId) {
         req.body.loserId = req.match.playerOneId;
+        setWinDefeat(req.match.playerTwoId, req.match.playerOneId, next);
+    } else {
+        setDraw(req.match.playerOneId, req.match.playerTwoId, next);
     }
     Match.findByIdAndUpdate(req.match.id,
         req.body,
