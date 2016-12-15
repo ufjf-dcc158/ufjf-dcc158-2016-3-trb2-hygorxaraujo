@@ -15,7 +15,7 @@ module.exports = function () {
     }
     app.use(bodyParser.urlencoded({extend: true}));
     app.use(bodyParser.json());
-    app.use(methodOverride());
+    app.use(methodOverride('_method'));
     app.use(express.static('./public'));
     app.set('views', './app/view');
     app.set('view engine', 'ejs');

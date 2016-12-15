@@ -15,7 +15,9 @@
             <th>Jogador um</th>
             <th>Jogador dois</th>
             <th>Terminada</th>
+            <th>Empate</th>
             <th>Vencedor</th>
+            <th>Definir vencedor</th>
         </tr>
         <%
         for(var i = 0; i < matches.length; i++){
@@ -25,8 +27,44 @@
             <td><%= match.date %></td>
             <td><%= match.playerOneId.firstname + " " + match.playerOneId.lastname %></td>
             <td><%= match.playerTwoId.firstname + " " + match.playerTwoId.lastname %></td>
-            <td><%= match.finished %></td>
-            <td><%= match.winnerId %></td>
+            <td><%= match.finished ? "Sim" : "Não" %></td>
+            <td>
+                <% if (match.finished) { %>
+                <%= match.draw ? "Sim" : "Não" %>
+                <% } else { %>
+                <form method="POST" action="/matches/<%= match._id %>?_method=PUT">
+                    <input type="hidden" name="draw" value="true"/>
+                    <input type="submit" value="Empate"/>
+                </form>
+                <% } %>
+            </td>
+            <td>
+                <% if (match.winnerId) { %>
+                <%= match.winnerId.firstname + " " + match.winnerId.lastname %>
+                <% } %>
+            </td>
+            <td>
+                <%
+                if (!match.finished) {
+                %>
+                <form method="POST" action="/matches/<%= match._id %>?_method=PUT">
+                    <select name="winnerId" required>
+                        <option value="<%= match.playerOneId._id %>">
+                            <%= match.playerOneId.firstname + " " + match.playerOneId.lastname %>
+                        </option>
+                        <option value="<%= match.playerTwoId._id %>">
+                            <%= match.playerTwoId.firstname + " " + match.playerTwoId.lastname %>
+                        </option>
+                    </select>
+                    <input type="submit" value="Definir"/>
+                </form>
+                <%
+                } else { %>
+                <p>Definido</p>
+                <%
+                }
+                %>
+            </td>
         </tr>
         <%
         }

@@ -6,8 +6,9 @@ var MatchSchema = new Schema({
     playerOneId: {type: Schema.Types.ObjectId, ref: 'Player'},
     playerTwoId: {type: Schema.Types.ObjectId, ref: 'Player'},
     finished: {type: Boolean, default: false},
-    winnerId: {type: String, default: null},
-    loserId: {type: String, default: null}
+    draw: {type: Boolean, default: false},
+    winnerId: {type: Schema.Types.ObjectId, ref: 'Player'},
+    loserId: {type: Schema.Types.ObjectId, ref: 'Player'}
 });
 
 mongoose.model('Match', MatchSchema);
