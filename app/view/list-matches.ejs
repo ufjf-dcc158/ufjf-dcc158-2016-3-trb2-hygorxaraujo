@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include partials/head.ejs %>
+</head>
+<body>
+<header>
+    <% include partials/header.ejs %>
+</header>
+<h1>Partidas</h1>
+<div class="panel panel-body">
+    <table class="table table-bordered">
+        <tr>
+            <th>Data</th>
+            <th>Jogador um</th>
+            <th>Jogador dois</th>
+            <th>Terminada</th>
+            <th>Vencedor</th>
+        </tr>
+        <%
+        for(var i = 0; i < matches.length; i++){
+            var match = matches[i];
+        %>
+        <tr>
+            <td><%= match.date %></td>
+            <td><%= match.playerOneId.firstname + " " + match.playerOneId.lastname %></td>
+            <td><%= match.playerTwoId.firstname + " " + match.playerTwoId.lastname %></td>
+            <td><%= match.finished %></td>
+            <td><%= match.winnerId %></td>
+        </tr>
+        <%
+        }
+        %>
+    </table>
+</div>
+<footer>
+    <% include partials/footer.ejs %>
+</footer>
+</body>
+</html>

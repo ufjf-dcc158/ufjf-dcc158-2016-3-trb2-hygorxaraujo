@@ -10,7 +10,6 @@ module.exports.create = function (req, res, next) {
         if (err) {
             next(err);
         } else {
-            //res.json(player);
             Player.find({}, function (err, players) {
                 if (err) {
                     next(err);

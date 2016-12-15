@@ -17,7 +17,16 @@ module.exports.create = function (req, res, next) {
         if (err) {
             next(err);
         } else {
-            res.json(match);
+            Match.find({})
+                .populate('playerOneId')
+                .populate('playerTwoId')
+                .exec(function (err, matches) {
+                    if (err) {
+                        next(err);
+                    } else {
+                        res.render('list-matches', {matches: matches});
+                    }
+                });
         }
     });
 };
@@ -30,7 +39,7 @@ module.exports.list = function (req, res, next) {
             if (err) {
                 next(err);
             } else {
-                res.json(matches);
+                res.render('list-matches', {matches: matches});
             }
         });
 };

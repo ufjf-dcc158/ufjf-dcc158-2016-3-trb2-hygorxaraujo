@@ -3,5 +3,5 @@ module.exports = function(app) {
     app.route('/matches')
         .get(match.list)
         .post(match.create);
-  app.get('/agendar-partida', match.register);
+    app.get('/register-match', match.register);
 };
