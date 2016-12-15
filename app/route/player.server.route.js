@@ -6,5 +6,5 @@ module.exports = function(app) {
     app.param('playerId', player.playerById);
     app.route('/players/:playerId')
         .get(player.read);
-  app.get("/cadastrar-jogador", player.register);
+    app.get("/register-player", player.register);
 };
