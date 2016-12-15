@@ -23,11 +23,14 @@ module.exports.create = function (req, res, next) {
 };
 
 module.exports.list = function (req, res, next) {
-    Match.find({}, function (err, matches) {
-        if (err) {
-            next(err);
-        } else {
-            res.json(matches);
-        }
-    });
+    Match.find({})
+        .populate('playerOneId')
+        .populate('playerTwoId')
+        .exec(function (err, matches) {
+            if (err) {
+                next(err);
+            } else {
+                res.json(matches);
+            }
+        });
 };

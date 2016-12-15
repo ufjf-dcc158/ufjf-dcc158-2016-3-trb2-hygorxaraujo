@@ -3,8 +3,8 @@ var Schema = mongoose.Schema;
 
 var MatchSchema = new Schema({
     date: Date,
-    playerOneId: String,
-    playerTwoId: String,
+    playerOneId: {type: Schema.Types.ObjectId, ref: 'Player'},
+    playerTwoId: {type: Schema.Types.ObjectId, ref: 'Player'},
     finished: {type: Boolean, default: false},
     winnerId: {type: String, default: null},
     loserId: {type: String, default: null}
