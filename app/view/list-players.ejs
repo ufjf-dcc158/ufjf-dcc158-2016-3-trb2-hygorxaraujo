@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include partials/head.ejs %>
+</head>
+<body>
+<header>
+    <% include partials/header.ejs %>
+</header>
+<h1>Jogadores</h1>
+<div class="panel panel-body">
+    <table class="table table-bordered">
+        <tr>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Data de nascimento</th>
+            <th>Vitórias</th>
+            <th>Derrotas</th>
+            <th>Empates</th>
+            <th>ELO</th>
+        </tr>
+        <%
+        for(var i = 0; i < players.length; i++){
+            var player = players[i];
+        %>
+        <tr>
+            <td><%= player.firstname %></td>
+            <td><%= player.lastname %></td>
+            <td><%= player.birthday %></td>
+            <td><%= player.wins %></td>
+            <td><%= player.losses %></td>
+            <td><%= player.draws %></td>
+            <td><%= player.eloRating %></td>
+        </tr>
+        <%
+        }
+        %>
+    </table>
+</div>
+<footer>
+    <% include partials/footer.ejs %>
+</footer>
+</body>
+</html>

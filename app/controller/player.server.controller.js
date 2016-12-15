@@ -20,7 +20,7 @@ module.exports.list = function (req, res, next) {
         if (err) {
             next(err);
         } else {
-            res.json(players);
+            res.render('list-players', {players: players});
         }
     });
 };
